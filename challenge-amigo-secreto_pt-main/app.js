@@ -36,6 +36,7 @@ function sortearAmigo()
     
     //Exibir a mensagem com o resultado do amigo sorteado
     document.getElementById('resultado').innerHTML = `O amigo secreto sorteado é:${nomeSorteado}`;
+    
     }
  }
 
@@ -52,3 +53,9 @@ function sortearAmigo()
         lista.appendChild(item);
      }
  }
+function reiniciarJogo()
+{
+   document.getElementById('listaAmigos').innerHTML = "";
+   document.getElementById('resultado').innerHTML = "";
+   
+}
