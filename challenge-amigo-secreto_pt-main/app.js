@@ -1,6 +1,6 @@
 
 //O principal objetivo deste desafio é fortalecer suas habilidades em lógica de programação. Aqui você deverá desenvolver a lógica para resolver o problema.
-//Versão 05 de agosto - 2.1 17:00 hs 
+//Versão 06 de agosto - 3.0 14:00 horas
 
 let vetorAmigos = [];   //variavel array para a lista de amigos
 let numeroLimite = 10;   //aceitar até 9 amigos
