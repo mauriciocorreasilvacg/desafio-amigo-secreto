@@ -3,7 +3,7 @@
 //Versão 05 de agosto - 2.1 17:00 hs 
 
 let vetorAmigos = [];   //variavel array para a lista de amigos
-let numeroLimite = 4;   //numero maximo de amigos 
+let numeroLimite = 10;   //aceitar até 9 amigos
 
 //Função acionada quando usuário clica adicionar amigo 
 function adicionarAmigo() 
@@ -14,13 +14,17 @@ function adicionarAmigo()
     {
       alert('Por favor, insira um nome válido !');
     }
-    else 
-    {
-      vetorAmigos.push(nome);                     //adiciona o nome no array
-      document.querySelector('input').value = ''  //apenas limpa o campo
-      atualizarLista()                            //imprime nomes na lista
-    };   
-}
+    else { 
+        if (vetorAmigos.length < 9)
+         {
+           vetorAmigos.push(nome);                     //adiciona o nome no array
+           document.querySelector('input').value = ''  //apenas limpa o campo
+           atualizarLista()                            //imprime nomes na lista
+         }
+         else 
+           {alert('Você pode inserir no máximo 9 amigos !');}
+        }
+}   
   
 function sortearAmigo()
  {
@@ -29,14 +33,20 @@ function sortearAmigo()
        alert ('A lista de amigos está vazia, adicione amigos antes de sortear.')
     }
     else 
-    {    
+    { 
+
     let quantidadeDeAmigosNaLista = vetorAmigos.length
-    let indiceEscolhido = parseInt(Math.random() * numeroLimite + 1);
-    let nomeSorteado = vetorAmigos[indiceEscolhido];
-    
+    let indiceSorteado = Math.floor(Math.random() * numeroLimite + 1) ;
+        
+    while (indiceSorteado >= quantidadeDeAmigosNaLista) 
+      {
+        indiceSorteado = Math.floor(Math.random() * numeroLimite + 1) ;
+      } 
+
+    let nomeSorteado = vetorAmigos[indiceSorteado];
+        
     //Exibir a mensagem com o resultado do amigo sorteado
     document.getElementById('resultado').innerHTML = `O amigo secreto sorteado é:${nomeSorteado}`;
-    
     }
  }
 
@@ -52,10 +62,17 @@ function sortearAmigo()
         item.textContent = vetorAmigos[contador];
         lista.appendChild(item);
      }
- }
-function reiniciarJogo()
-{
-   document.getElementById('listaAmigos').innerHTML = "";
-   document.getElementById('resultado').innerHTML = "";
-   
-}
+  }
+ function limpar()
+ {
+  
+  const lista = document.getElementById('listaAmigos')
+  lista.innerHTML = "";
+
+  const resultado = document.getElementById('resultado')
+  resultado.innerHTML = "";
+
+  vetorAmigos = [];   //variavel array para a lista de amigos
+  numeroLimite = 10;   //amigos de 1 até 9
+
+  }
